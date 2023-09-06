@@ -5,8 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal, Form, Image } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './Header';
-import { useAuth0, Profile } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from "./Auth";
+import Profile from "./Profile";
 const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class App extends Component {
