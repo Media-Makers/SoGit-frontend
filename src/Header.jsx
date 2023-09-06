@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './images'
+import logo from '../src/images/SoGit.png';
 class Header extends Component {
     render() {
       return (
