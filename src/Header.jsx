@@ -9,8 +9,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 class Header extends Component {
     render() {
       return (
-        <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
+        <Navbar expand="lg" className="bg-body-tertiary mt-0">
+      <Container className="pt-0">
         <Navbar.Brand href="#home"><img
               src="/images/SoGit.png"
               width="30"
