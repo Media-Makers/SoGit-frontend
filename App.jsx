@@ -17,6 +17,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Profile />
+        <HorizontalExample />
         <LoginButton />
       </div>
     );
