@@ -8,6 +8,7 @@ import Header from './src/Header';
 //import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from "./src/Auth";
 import Profile from "./src/Profile";
+import HorizontalExample from "./src/Mediamakers"
 //const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class App extends Component {
