@@ -20,7 +20,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       
-      const response = await axios.get(`${BACKEND_URL}/`);
+      const response = await axios.get(`${BACKEND_URL}/signUp`);
       this.setState({ userData: response.data });
     } catch (error) {
       console.error("Error fetching data:", error);
