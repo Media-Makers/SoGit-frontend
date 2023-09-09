@@ -7,7 +7,7 @@ import Profile from "./src/Profile";
 import NewsSearch from "./src/NewsSearch";
 import HorizontalExample from "./src/Mediamakers";
 
-const url = import.meta.env.VITE_BACKENDURL || "http://localhost:4001"
+
 
 class App extends Component {
   render() {
