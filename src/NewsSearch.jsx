@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiKey = process.env.VITE_NEWS_API_KEY;
 
 const NewsSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -7,10 +8,9 @@ const NewsSearch = () => {
 
 const fetchNewsData = async () => {
     try {
-      const apiKey = "YOUR_NEWS_API_KEY";
-      const response = await fetch( //insert http for news api
-        
-      );
+      const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+      const response = await fetch(`https://newsapi.org/v2/everything?q="javascript"&apiKey=${apiKey}`);
+         
       const data = await response.json();
       setNewsData(data.articles);
     } catch (error) {

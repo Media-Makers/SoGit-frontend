@@ -45,8 +45,8 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="/news" component={NewsSearch} />
-                  <Route path="/" exact component={Profile} />
+                 <Route path="/news" element={<NewsSearch />} /> 
+                  <Route path="/" exact element={<Profile />} /> 
                 </Routes>
               </div>
               <div className="col-md-4">
