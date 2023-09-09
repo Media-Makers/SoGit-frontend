@@ -7,6 +7,7 @@ import Profile from "./src/Profile";
 import NewsSearch from "./src/NewsSearch";
 import HorizontalExample from "./src/Mediamakers";
 import axios from "axios";
+const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:3001";
 
 class App extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       
-      const response = await axios.get("http://localhost:");
+      const response = await axios.get(`${BACKEND_URL}/`);
       this.setState({ userData: response.data });
     } catch (error) {
       console.error("Error fetching data:", error);
