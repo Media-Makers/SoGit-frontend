@@ -37,7 +37,7 @@ class App extends Component {
               <div className="col-md-8">
                 <Routes>
                   <Route
-                    path="/profile"
+                    path="./models/signup"
                     render={(props) => (
                       <Profile
                         {...props}
@@ -45,7 +45,7 @@ class App extends Component {
                       />
                     )}
                   />
-                 <Route path="/news" element={<NewsSearch />} /> 
+                 <Route path="/technology-news" element={<NewsSearch />} /> 
                   <Route path="/" exact element={<Profile />} /> 
                 </Routes>
               </div>
