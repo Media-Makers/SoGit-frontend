@@ -6,8 +6,26 @@ import LoginButton from "./src/Auth";
 import Profile from "./src/Profile";
 import NewsSearch from "./src/NewsSearch";
 import HorizontalExample from "./src/Mediamakers";
+import axios from "axios";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userData: [],
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      
+      const response = await axios.get("http://localhost:");
+      this.setState({ userData: response.data });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -17,7 +35,15 @@ class App extends Component {
             <div className="row">
               <div className="col-md-8">
                 <Routes>
-                  <Route path="/profile" component={Profile} />
+                  <Route
+                    path="/profile"
+                    render={(props) => (
+                      <Profile
+                        {...props}
+                        userData={this.state.userData}
+                      />
+                    )}
+                  />
                   <Route path="/news" component={NewsSearch} />
                   <Route path="/" exact component={Profile} />
                 </Routes>
