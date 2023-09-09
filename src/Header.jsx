@@ -1,14 +1,14 @@
+// Header.js
 import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
 class Header extends Component {
   render() {
     return (
       <Navbar expand="lg" className="bg-body-tertiary fixed-top">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/"> 
           <img
             src="/images/SoGit.png"
             width="45"
@@ -20,15 +20,15 @@ class Header extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#feed">Feed</Nav.Link>
-            <Nav.Link href="#profile">Profile</Nav.Link>
-            <Nav.Link href="#post">Post</Nav.Link>
+            <Nav.Link href="/feed">Feed</Nav.Link> 
+            <Nav.Link href="/profile">Profile</Nav.Link> 
+            <Nav.Link href="/post">Post</Nav.Link> 
             <NavDropdown title="Settings" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="/settings/action1">Action 1</NavDropdown.Item> 
+              <NavDropdown.Item href="/settings/action2">Action 2</NavDropdown.Item> 
+              <NavDropdown.Item href="/settings/action3">Action 3</NavDropdown.Item> 
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              <NavDropdown.Item href="/settings/separated-link">Separated link</NavDropdown.Item> 
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -38,4 +38,3 @@ class Header extends Component {
 }
 
 export default Header;
-
