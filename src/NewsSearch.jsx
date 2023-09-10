@@ -1,72 +1,32 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 const apiKey = import.meta.env.VITE_NEWS_API_KEY;
 
-const NewsSearch = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [newsData, setNewsData] = useState([]);
-  const [filteredNews, setFilteredNews] = useState([]);
+const url = import.meta.env.VITE_BACKENDURL || "http://localhost:3001";
 
-const fetchNewsData = async () => {
-    try {
-      const apiKey = import.meta.env.VITE_NEWS_API_KEY;
-      const response = await fetch(`https://newsapi.org/v2/everything?q="javascript"&apiKey=${apiKey}`);
-         
-      const data = await response.json();
-      setNewsData(data.articles);
-    } catch (error) {
-      console.error("Error fetching news data: ", error);
-    }
-  };
-
-const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  
+export default function NewsSearch() {
+  const [articles, setArticles] = useState([]);
   useEffect(() => {
-    const filtered = newsData.filter((article) =>
-      article.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredNews(filtered);
-  }, [searchQuery, newsData]);
-
-  useEffect(() => {
-    if (searchQuery.trim() !== "") {
-      fetchNewsData();
-    }
-  }, [searchQuery]);
-
+    const getNews = async () => {
+      const newsData = await axios.get(`${url}/news`);
+      setArticles(newsData.data);
+    };
+    getNews();
+  }, [articles]);
+  console.log(articles);
   return (
-    <div>
-      <div className="search-box">
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
-        <button>
-          <i className="fas fa-search"></i>
-        </button>
-      </div>
-      {filteredNews.length > 0 ? (
-        <div>
-          <h3>News Results:</h3>
-          <ul>
-            {filteredNews.map((article, index) => (
-              <li key={index}>
-                <a href={article.url} target="_blank" rel="noopener noreferrer">
-                  {article.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>No articles found.</p>
-      )}
-    </div>
+    <>
+      {articles.map((newsData, index) => (
+        <Card key ={index}>
+          <Card.Body>
+          <Card.Title>{newsData.title}</Card.Title>
+          <Card.Subtitle>{newsData.desciption}</Card.Subtitle>
+          <Card.Text>{newsData.content}</Card.Text>
+          </Card.Body>
+        </Card>
+      ))}
+    </>
   );
-};
-
-export default NewsSearch;
+}
