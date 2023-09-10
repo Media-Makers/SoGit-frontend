@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./src/Header";
 import LoginButton from "./src/Auth";
 import Profile from "./src/Profile";
-import NewsSearch from "./src/NewsSearch";
+// import NewsSearch from "./src/NewsSearch";
 import HorizontalExample from "./src/Mediamakers";
 import axios from "axios";
 const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:3001";
@@ -45,7 +45,7 @@ class App extends Component {
                       />
                     )}
                   />
-                 <Route path="/news" element={<NewsSearch />} /> 
+            
                   <Route path="/" exact element={<Profile />} /> 
                 </Routes>
               </div>
