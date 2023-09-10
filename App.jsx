@@ -33,13 +33,14 @@ function App () {
               <div className="col-md-8">
                 <Routes>
                   <Route
-                    path="/profile"
+                    path="./models/signup"
                     render={(props) => (
                       <Profile {...props} userData={this.state.userData} />
                     )}
                   />
-
                   <Route path="/" element={isAuthenticated && <NewsSearch/>}/>
+                 <Route path="/technology-news" element={<NewsSearch />} /> 
+                  <Route path="/" exact element={<Profile />} /> 
                 </Routes>
               </div>
               <div className="col-md-4">

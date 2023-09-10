@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+const apiKey = import.meta.env.VITE_NEWS_API_KEY;
 
 const url = import.meta.env.VITE_BACKENDURL || "http://localhost:3001";
 
