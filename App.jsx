@@ -30,7 +30,7 @@ function App() {
                 />
                 <Route path="/" element={isAuthenticated && <NewsSearch />} />
                 <Route path="/technology-news" element={<NewsSearch />} />
-                <Route path="/" exact element={<Profile />} />
+                <Route path="/profile" exact element={<Profile />} />
               </Routes>
             </div>
           
@@ -40,7 +40,7 @@ function App() {
     
             <div className="col-md-4">
               {!isAuthenticated && <LoginButton />}
-              {isAuthenticated && <LoginButton />}
+              
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import "./Profile.css"; 
+// import "./Profile.css"; 
 import LoginButton from "./Auth";
 
 const Profile = () => {
@@ -22,9 +22,9 @@ const Profile = () => {
             <i className="fas fa-search"></i>
           </button>
         </div>
-        <div>
+        {/* <div>
           <LoginButton />
-        </div>
+        </div> */}
       </div>
     )
   );
