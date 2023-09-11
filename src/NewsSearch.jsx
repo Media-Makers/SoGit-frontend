@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Accordion, Card } from "react-bootstrap";
-import LoginButton from "./Auth";
 import { Icon } from "@iconify/react";
 const apiKey = import.meta.env.VITE_NEWS_API_KEY;
 
