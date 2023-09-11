@@ -46,7 +46,7 @@ export default function NewsSearch() {
           </Card.Body>
         </Card>
       ))}
-      <div className="col-md-4">{isAuthenticated && <LoginButton />}</div>
+      
     </>
   );
 }

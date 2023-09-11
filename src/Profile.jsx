@@ -22,9 +22,10 @@ const Profile = () => {
             <i className="fas fa-search"></i>
           </button>
         </div>
-        {/* <div>
+        <div>
           <LoginButton />
-        </div> */}
+          <button onClick={() => logout()}>Logout</button>
+        </div>
       </div>
     )
   );
