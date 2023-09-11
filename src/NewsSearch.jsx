@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { Accordion, Card } from "react-bootstrap";
 import { Icon } from "@iconify/react";
@@ -18,7 +18,12 @@ export default function NewsSearch() {
 
     getNews();
   }, [articles]);
-  console.log(articles);
+  const likeHandler = async (isLiked,id) => {
+    const result = await axios.patch(`${url}/likes/${id}`,{likes:isLiked});
+    console.log (result.data)
+    setArticles ([])
+
+  }
 
   const { isAuthenticated } = useAuth0();
   return (
@@ -30,8 +35,15 @@ export default function NewsSearch() {
             <Card.Subtitle>{newsData.desciption}</Card.Subtitle>
             <Card.Text>{newsData.content}</Card.Text>
             <div>
-              <Icon icon="icon-park-twotone:like" />{" "}
-              <Icon icon="icon-park:like" />
+              <Icon
+                icon={
+                  newsData.likes ? "icon-park-twotone:like" : "icon-park:like"
+                }
+                onClick={()=>likeHandler(newsData.likes, newsData._id)}
+                
+              />
+            
+             
             </div>
             <Accordion defaultActiveKey="1">
               <Accordion.Item eventKey="0">
@@ -46,7 +58,6 @@ export default function NewsSearch() {
           </Card.Body>
         </Card>
       ))}
-      
     </>
   );
 }
