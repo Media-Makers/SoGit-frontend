@@ -23,7 +23,7 @@ export default function NewsSearch() {
     getNews();
   }, [articles]);
 
-  async function likeHandler (isLiked, id) {
+  async function likeHandler(isLiked, id) {
     const result = await axios.patch(`${url}/likes/${id}`, { likes: isLiked });
     console.log(result.data);
     setArticles([]);
@@ -49,62 +49,79 @@ export default function NewsSearch() {
   return (
     <div className="feed-container">
       <div className="parallax">
-      {articles.map((newsData, index) => (
-        <div className="index-div" key={index}>
-          <div className="card-wrapper">
-          <Card>
-            <Card.Body>
-              <Card.Title>{newsData.title}</Card.Title>
-              <Card.Subtitle>{newsData.desciption}</Card.Subtitle>
-              <Card.Text>{newsData.content}</Card.Text>
-              <div className="icon-click">
-              <div onClick={() => likeHandler(!newsData.likes, newsData._id)}>
-                <Icon
-                className="icon-container"
-                onClick={() => likeHandler(!newsData.likes, newsData._id)}
-                  icon={
-                    !newsData.likes ? "icon-park-twotone:like" : "icon-park:like"
-                  }
-                />
+        {articles.map((newsData, index) => (
+          <div className="index-div" key={index}>
+            <div className="card-wrapper">
+              <Card>
+                <Card.Body>
+                  <Card.Title>{newsData.title}</Card.Title>
+                  <Card.Subtitle>{newsData.desciption}</Card.Subtitle>
+                  <Card.Text>{newsData.content}</Card.Text>
+                  {console.log(newsData.url)}
 
-              </div>
-              </div>
+                  <Card.Text>
+                    Article URL: <a href={newsData.url}>{newsData.url}</a>
+                  </Card.Text>
+                  <Card.Text>
+                    Article Image URL:{" "}
+                    <a href={newsData.urlToImage}>{newsData.urlToImage}</a>
+                  </Card.Text>
 
-              <Accordion>
-                <Accordion.Item>
-                  <Accordion.Header>Comments</Accordion.Header>
-                  <Accordion.Body>
-                    {newsData.comments.map((comment, index) => (
-                      <p key={index}>{comment}</p>
-                    ))}
-                    {isAuthenticated && (
-                      <Form onSubmit={(e) => submitComment(e, newsData._id)}>
-                        <Form.Group>
-                          <Form.Control
-                            type="text"
-                            placeholder="Add a comment..."
-                            value={
-                              selectedArticleId === newsData._id
-                                ? commentInput
-                                : ""
-                            }
-                            onChange={handleCommentInput}
-                            onFocus={() => selectArticle(newsData._id)}
-                          />
-                        </Form.Group>
-                        <Button type="submit" variant="primary">
-                          Add Comment
-                        </Button>
-                      </Form>
-                    )}
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </Card.Body>
-          </Card>
+                  <div className="icon-click">
+                    <div
+                      onClick={() => likeHandler(!newsData.likes, newsData._id)}
+                    >
+                      <Icon
+                        className="icon-container"
+                        onClick={() =>
+                          likeHandler(!newsData.likes, newsData._id)
+                        }
+                        icon={
+                          newsData.likes
+                            ? "icon-park-twotone:like"
+                            : "icon-park:like"
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <Accordion>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>Comments</Accordion.Header>
+                      <Accordion.Body>
+                        {newsData.comments.map((comment, index) => (
+                          <p key={index}>{comment}</p>
+                        ))}
+                        {isAuthenticated && (
+                          <Form
+                            onSubmit={(e) => submitComment(e, newsData._id)}
+                          >
+                            <Form.Group>
+                              <Form.Control
+                                type="text"
+                                placeholder="Add a comment..."
+                                value={
+                                  selectedArticleId === newsData._id
+                                    ? commentInput
+                                    : ""
+                                }
+                                onChange={handleCommentInput}
+                                onFocus={() => selectArticle(newsData._id)}
+                              />
+                            </Form.Group>
+                            <Button type="submit" variant="primary">
+                              Add Comment
+                            </Button>
+                          </Form>
+                        )}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </Card.Body>
+              </Card>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );
