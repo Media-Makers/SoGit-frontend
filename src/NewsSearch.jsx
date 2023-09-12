@@ -20,7 +20,7 @@ export default function NewsSearch() {
       setArticles(newsData.data);
     };
 
-    getNews();
+    if (articles.length === 0)getNews();
   }, [articles]);
 
   async function likeHandler(isLiked, id) {
