@@ -25,15 +25,25 @@ function App() {
                     <Profile {...props} userData={this.state.userData} />
                   )}
                 />
-              
+
                 <Route path="/" element={isAuthenticated && <NewsSearch />} />
 
                 <Route path="/profile" exact element={<Profile />} />
               </Routes>
             </div>
-<div className="login-wrap">
-            <div className="login">{!isAuthenticated && <LoginButton />}</div>
-          </div>
+            <div className="login-wrap">
+              <div className="login">
+                {!isAuthenticated && (
+                  <>
+                    <div className='image-bg'>
+                  
+                      <Image src="./images/SoGit3.png" fluid  />
+                    </div>
+                    <LoginButton />
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
