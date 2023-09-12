@@ -52,19 +52,19 @@ export default function NewsSearch() {
         {articles.map((newsData, index) => (
           <div className="index-div" key={index}>
             <div className="card-wrapper">
-              <Card>
+              <Card style={{ background: '#1e1f21', color: '#fff' }}>
                 <Card.Body>
-                  <Card.Title>{newsData.title}</Card.Title>
+                  <Card.Title style={{ color: '#00fefb' }}>{newsData.title}</Card.Title>
                   <Card.Subtitle>{newsData.desciption}</Card.Subtitle>
                   <Card.Text>{newsData.content}</Card.Text>
                   {console.log(newsData.url)}
 
-                  <Card.Text>
-                    Article URL: <a href={newsData.url}>{newsData.url}</a>
+                  <Card.Text >
+                    Article URL: <a href={newsData.url} style={{ color: '#084d9f' }}>{newsData.url}</a>
                   </Card.Text>
-                  <Card.Text>
+                  <Card.Text >
                     Article Image URL:{" "}
-                    <a href={newsData.urlToImage}>{newsData.urlToImage}</a>
+                    <a href={newsData.urlToImage} style={{ color: '#084d9f' }}>{newsData.urlToImage}</a>
                   </Card.Text>
 
                   <div className="icon-click">
@@ -85,10 +85,10 @@ export default function NewsSearch() {
                     </div>
                   </div>
 
-                  <Accordion>
+                  <Accordion >
                     <Accordion.Item eventKey="0">
-                      <Accordion.Header>Comments</Accordion.Header>
-                      <Accordion.Body>
+                      <Accordion.Header style={{ background: '#00fefb', color: '#fff' }}>Comments</Accordion.Header>
+                      <Accordion.Body >
                         {newsData.comments.map((comment, index) => (
                           <p key={index}>{comment}</p>
                         ))}
@@ -109,7 +109,7 @@ export default function NewsSearch() {
                                 onFocus={() => selectArticle(newsData._id)}
                               />
                             </Form.Group>
-                            <Button type="submit" variant="primary">
+                            <Button style={{ background: '#084d94'}} type="submit" variant="primary">
                               Add Comment
                             </Button>
                           </Form>
